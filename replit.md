@@ -1,10 +1,12 @@
-# [Project name]
+# NEXUS Student OS
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+NEXUS is a local-first futuristic student operating system connecting study, scholarships, opportunities, skills, planning, and campus resources in one interactive prototype.
 
 ## Run & Operate
 
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/nexus-student-os run dev` — run the NEXUS web app through its managed workflow
+- `pnpm --filter @workspace/nexus-student-os run typecheck` — typecheck the frontend
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
@@ -14,6 +16,7 @@ _Replace the heading above with the project's name, and this line with one sente
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
+- React + Vite + Tailwind CSS, Framer Motion, Lucide React, Recharts
 - API: Express 5
 - DB: PostgreSQL + Drizzle ORM
 - Validation: Zod (`zod/v4`), `drizzle-zod`
@@ -22,23 +25,27 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/nexus-student-os/src/App.tsx` — local-first NEXUS experience, routes, demo data, and interactions
+- `artifacts/nexus-student-os/src/index.css` — NEXUS visual system, responsive utilities, and motion preferences
+- `artifacts/nexus-student-os/.replit-artifact/artifact.toml` — managed web artifact routing and workflow configuration
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The first prototype is frontend-only and local-first; demo data is embedded so the judging experience works without credentials or live services.
+- Student progress, intro state, settings, saved scholarships, XP, planner tasks, and skill milestones persist in localStorage.
+- The intro and main shell share a connected-node NEXUS logo and use the same dark atmospheric visual system.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+The prototype includes a guided intro, dashboard missions, demo AI chat, scholarship radar and eligibility checker, opportunity radar, skill roadmaps, smart planner, stylized campus explorer, progress and gamification views, global search, notifications, profile, and settings.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- The product should feel like a premium startup experience rather than a conventional school dashboard.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Standalone Vite builds require `PORT` and `BASE_PATH`; the managed artifact workflow supplies them automatically.
 
 ## Pointers
 

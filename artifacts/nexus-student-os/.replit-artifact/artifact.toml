@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "NEXUS Student OS"
+description = "A premium futuristic student operating system connecting study, scholarships, opportunities, skills, planning, and campus resources in one interactive experience."
+version = "1.0.0"
+id = "artifacts/nexus-student-os"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22989
+
+[services.development]
+run = "pnpm --filter @workspace/nexus-student-os run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/nexus-student-os", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/nexus-student-os/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22989"
+BASE_PATH = "/"
